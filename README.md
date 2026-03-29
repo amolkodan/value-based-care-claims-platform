@@ -1,4 +1,4 @@
-# VBC Bundled Treatment Platform
+# VBC Bundled Treatment Platform (Open Source)
 
 Open-source technical foundation for building **Value-Based Care (VBC)** bundled payment engines using normalized **medical claims** and **pharmacy claims**. The platform includes a versioned episode catalog, deterministic and explainable episode assignment, weighted overlap allocation (one claim split across multiple episodes), API/CLI execution paths, and analytics outputs suitable for contracting, actuarial review, and care management operations.
 
