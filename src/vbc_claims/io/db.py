@@ -23,7 +23,18 @@ def execute_sql_file(sql_file_path: str) -> None:
     with open(sql_file_path, "r", encoding="utf-8") as f:
         sql = f.read()
 
-    statements = [s.strip() for s in sql.split(";") if s.strip()]
+    statements = []
+    for chunk in sql.split(";"):
+        stripped = chunk.strip()
+        if not stripped:
+            continue
+        # Skip comment-only fragments produced by semicolon splitting.
+        non_comment_lines = [
+            line for line in stripped.splitlines() if line.strip() and not line.strip().startswith("--")
+        ]
+        if not non_comment_lines:
+            continue
+        statements.append(stripped)
 
     with db_connection() as conn:
         for stmt in statements:
